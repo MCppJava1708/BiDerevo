@@ -1033,4 +1033,149 @@ public class TreeTests
 		tree.init(arr);
 		tree.del(101);;
 	}
+
+	// ========================================
+	// Nodes
+	// ========================================
+
+	@Test
+	public void testNodesMeny()
+	{
+		int init[] =
+			{ 53, 30, 14, 39, 9, 23, 34, 47, 72, 61, 84, 79 };
+		tree.init(init);
+		int actual = tree.nodes();
+		int expected = 6;
+		assertEquals(expected, actual);
+	}
+
+	@Test
+	public void testNodesMeny1()
+	{
+		int init[] =
+			{ 53, 30, 14, 39, 9, 23, 34, 47, 72, 61, 84, 79, 85 };
+		tree.init(init);
+		int actual = tree.nodes();
+		int expected = 6;
+		assertEquals(expected, actual);
+	}
+
+	@Test
+	public void testNodesMeny2()
+	{
+		int init[] =
+			{ 53, 30, 14, 39, 9, 23, 34, 47, 72, 61, 57, 64, 84, 79, 85 };
+		tree.init(init);
+		int actual = tree.nodes();
+		int expected = 7;
+		assertEquals(expected, actual);
+	}
+
+	@Test
+	public void testNodesMeny3()
+	{
+		int init[] =
+			{ 53, 30, 14, 39, 9, 23, 34, 47, 72, 61, 57, 64, 84, 79, 85, 32, 36 };
+		tree.init(init);
+		int actual = tree.nodes();
+		int expected = 8;
+		assertEquals(expected, actual);
+	}
+
+	@Test
+	public void testNodesTwo()
+	{
+		int init[] =
+			{ 53, 30, 72 };
+		tree.init(init);
+		int actual = tree.leaves();
+		int expected = 2;
+		assertEquals(expected, actual);
+	}
+
+	@Test
+	public void testNodesOne()
+	{
+		int init[] =
+			{ 53, 30 };
+		tree.init(init);
+		int actual = tree.nodes();
+		int expected = 1;
+		assertEquals(expected, actual);
+	}
+
+	@Test
+	public void testNodesZero()
+	{
+		int init[] =
+			{};
+		tree.init(init);
+		int actual = tree.nodes();
+		int expected = 0;
+		assertEquals(expected, actual);
+	}
+
+	// ========================================
+	// Width
+	// ========================================
+
+
+
+	@Test
+	public void testWidthMeny4()
+	{
+		int init[] =
+			{ 100, 50, 150, 25, 75, 125, 175 };
+		tree.init(init);
+		int actual = tree.width();
+		int expected = 4;
+		assertEquals(expected, actual);
+	}
+
+	@Test
+	public void testWidthMeny16()
+	{
+		int init[] =
+			{100, 50, 150, 25, 75, 125, 175, 12, 38, 63, 88, 
+					112, 138, 163, 188, 6, 18, 32, 44, 56, 69, 82, 94, 106, 118, 
+					132, 144, 156, 169, 182, 194};;
+					tree.init(init);
+					int actual = tree.width();
+					int expected = 16;
+					assertEquals(expected, actual);
+	}
+
+
+	@Test
+	public void testWidthTwo()
+	{
+		int init[] =
+			{ 100, 50, 150 };
+		tree.init(init);
+		int actual = tree.width();
+		int expected = 2;
+		assertEquals(expected, actual);
+	}
+
+	@Test
+	public void testWidthOne()
+	{
+		int init[] =
+			{ 150, 100 };
+		tree.init(init);
+		int actual = tree.width();
+		int expected = 1;
+		assertEquals(expected, actual);
+	}
+
+	@Test
+	public void testWidthZero()
+	{
+		int init[] =
+			{};
+		tree.init(init);
+		int actual = tree.width();
+		int expected = 0;
+		assertEquals(expected, actual);
+	}
 }

@@ -116,8 +116,23 @@ public class BSTree implements TreeInterface
 	@Override
 	public int nodes()
 	{
-		return 0;
+		return nodesNode(root);
 	}
+
+	private int nodesNode(Node p)
+	{
+		if (p == null)
+			return 0;
+		int ret = 0;
+		if (p.left != null || p.right != null)
+		{
+			ret += 1;
+		}
+		ret += nodesNode(p.left);
+		ret += nodesNode(p.right);
+		return ret;
+	}
+	
 	@Override
 	public int height()
 	{
@@ -157,8 +172,36 @@ public class BSTree implements TreeInterface
 	@Override
 	public int width()
 	{
+		int maxWidth = 0;
+		int width;
+		int h = height();
+		int i;
+
+		// Получаем ширину каждого уровня и сравниваем с максимальной 
+		for (i = 1; i <= h; i++) 
+		{
+			width = getWidth(root, i);
+			if (width > maxWidth)
+				maxWidth = width;
+		}
+
+		return maxWidth;
+	}
+
+	/* получение ширины заданого уровня */
+	private int getWidth(Node p, int level) 
+	{
+		if (p == null)
+			return 0;
+
+		if (level == 1)
+			return 1;
+		else if (level > 1)
+			return getWidth(p.left, level - 1)
+					+ getWidth(p.right, level - 1);
 		return 0;
 	}
+	
 	@Override
 	public void reverse()
 	{
@@ -193,6 +236,7 @@ public class BSTree implements TreeInterface
 	@Override
 	public void del(int val)
 	{
+		
 	}
 
 	@Override
