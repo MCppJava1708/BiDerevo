@@ -134,20 +134,24 @@ public class BSTree implements TreeInterface
 		int retRight = 0;
 		if (p.left != null)
 		{
-			retLeft += heightNode(p.left);
-			retLeft++;
+			retLeft = heightNode(p.left);
+		} else
+		{
+			retLeft = 0;
 		}
 		if (p.right != null)
 		{
-			retRight += heightNode(p.right);
-			retRight++;
-		}
-		if (retRight > retLeft)
-		{
-			return retRight;
+			retRight = heightNode(p.right);
 		} else
 		{
-			return retLeft;
+			retRight = 0;
+		}
+		if (retLeft > retRight)
+		{
+			return retLeft + 1;
+		} else
+		{
+			return retRight + 1;
 		}
 	}
 	@Override
