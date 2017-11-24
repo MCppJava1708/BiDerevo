@@ -1,5 +1,5 @@
 
-public class BSTree
+public class BSTree implements TreeInterface
 {
 	class Node
 	{
@@ -20,6 +20,7 @@ public class BSTree
 
 	Node root = null;
 
+	@Override
 	public void init(int[] init)
 	{
 		if (init == null)
@@ -33,11 +34,13 @@ public class BSTree
 		}
 	}
 
+	@Override
 	public void clear()
 	{
 		root = null;
 	}
 
+	@Override
 	public void add(int val)
 	{
 		if (root == null)
@@ -73,6 +76,7 @@ public class BSTree
 		}
 	}
 
+	@Override
 	public int size()
 	{
 		return sizeNode(root);
@@ -91,6 +95,7 @@ public class BSTree
 		return ret;
 	}
 
+	@Override
 	public int leaves()
 	{
 		return leavesNode(root);
@@ -110,11 +115,13 @@ public class BSTree
 		return ret;
 	}
 
+	@Override
 	public int nodes()
 	{
 		return 0;
 	}
 
+	@Override
 	public int height()
 	{
 		return heightNode(root);
@@ -147,25 +154,23 @@ public class BSTree
 		}
 	}
 
+	@Override
 	public int width()
 	{
 		return 0;
 	}
 
+	@Override
 	public void reverse()
 	{
 	}
 
+	@Override
 	public void del(int val)
 	{
 	}
 
 	@Override
-	public String toString()
-	{
-		return null;
-	}
-
 	public int[] toArray()
 	{
 		int array[] = new int[size()];
