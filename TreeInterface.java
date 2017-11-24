@@ -1,7 +1,7 @@
 
 public interface TreeInterface
 {
-	public void init(int[] ini);
+	public void init(int[] init);
 
 	public void clear();
 

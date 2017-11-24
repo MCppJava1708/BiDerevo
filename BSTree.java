@@ -1,3 +1,4 @@
+import java.util.Arrays;
 
 public class BSTree implements TreeInterface
 {
@@ -137,20 +138,24 @@ public class BSTree implements TreeInterface
 		int retRight = 0;
 		if (p.left != null)
 		{
-			retLeft += heightNode(p.left);
-			retLeft++;
+			retLeft = heightNode(p.left);
+		} else
+		{
+			retLeft = 0;
 		}
 		if (p.right != null)
 		{
-			retRight += heightNode(p.right);
-			retRight++;
-		}
-		if (retRight > retLeft)
-		{
-			return retRight;
+			retRight = heightNode(p.right);
 		} else
 		{
-			return retLeft;
+			retRight = 0;
+		}
+		if (retLeft > retRight)
+		{
+			return retLeft + 1;
+		} else
+		{
+			return retRight + 1;
 		}
 	}
 
@@ -186,7 +191,16 @@ public class BSTree implements TreeInterface
 			return;
 		}
 		toArrayNode(array, index, p.left);
-		array[index.index] = p.val;
+		array[index.index++] = p.val;
 		toArrayNode(array, index, p.right);
+	}
+
+	public static void main(String args[])
+	{
+		int init[] =
+		{ 53, 30, 14, 39, 9, 23, 34, 47, 72, 61, 84, 79 };
+		BSTree tree = new BSTree();
+		tree.init(init);
+		System.out.println(Arrays.toString(tree.toArray()));
 	}
 }
