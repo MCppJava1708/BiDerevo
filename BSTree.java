@@ -1,4 +1,3 @@
-import java.util.Arrays;
 
 public class BSTree implements TreeInterface
 {
@@ -20,7 +19,7 @@ public class BSTree implements TreeInterface
 	}
 
 	Node root = null;
-
+	
 	@Override
 	public void init(int[] init)
 	{
@@ -52,7 +51,7 @@ public class BSTree implements TreeInterface
 			addNode(val, root);
 		}
 	}
-
+	
 	private void addNode(int val, Node p)
 	{
 		if (val < p.val)
@@ -76,7 +75,7 @@ public class BSTree implements TreeInterface
 			}
 		}
 	}
-
+	
 	@Override
 	public int size()
 	{
@@ -95,7 +94,6 @@ public class BSTree implements TreeInterface
 		ret += sizeNode(p.right);
 		return ret;
 	}
-
 	@Override
 	public int leaves()
 	{
@@ -115,13 +113,11 @@ public class BSTree implements TreeInterface
 		ret += leavesNode(p.right);
 		return ret;
 	}
-
 	@Override
 	public int nodes()
 	{
 		return 0;
 	}
-
 	@Override
 	public int height()
 	{
@@ -138,43 +134,81 @@ public class BSTree implements TreeInterface
 		int retRight = 0;
 		if (p.left != null)
 		{
-			retLeft = heightNode(p.left);
-		} else
-		{
-			retLeft = 0;
+			retLeft += heightNode(p.left);
+			retLeft++;
 		}
 		if (p.right != null)
 		{
-			retRight = heightNode(p.right);
-		} else
-		{
-			retRight = 0;
+			retRight += heightNode(p.right);
+			retRight++;
 		}
-		if (retLeft > retRight)
+		if (retRight > retLeft)
 		{
-			return retLeft + 1;
+			return retRight;
 		} else
 		{
-			return retRight + 1;
+			return retLeft;
 		}
 	}
-
 	@Override
 	public int width()
 	{
 		return 0;
 	}
-
 	@Override
 	public void reverse()
 	{
+		if(root == null)
+		{
+			return;
+		}
+		reverseNode(root);
 	}
-
+	
+	private void reverseNode(Node t)
+	{
+		if(t.left == null && t.right == null)
+		{
+			return;
+		}
+		
+		Node tmp = t.left;
+		Node tmp2 = t.right;
+		t.left = tmp2;
+		t.right = tmp;
+		if(t.left != null)
+		{
+			reverseNode(t.left);
+		}
+		if(t.right != null)
+		{
+			reverseNode(t.right);
+		}
+	}
+	
 	@Override
 	public void del(int val)
 	{
 	}
 
+	@Override
+	public String toString()
+	{
+		String ret = "";
+		int array[] = toArray();
+		int s = array.length;
+		for (int i = 0; i < s; i++)
+		{
+			if(i < s - 1)
+			{
+				ret += array[i] + ",";
+			}else
+			{
+				ret += array[i] + "";
+			}
+		}
+		return ret;
+	}
 	@Override
 	public int[] toArray()
 	{
@@ -193,14 +227,5 @@ public class BSTree implements TreeInterface
 		toArrayNode(array, index, p.left);
 		array[index.index++] = p.val;
 		toArrayNode(array, index, p.right);
-	}
-
-	public static void main(String args[])
-	{
-		int init[] =
-		{ 53, 30, 14, 39, 9, 23, 34, 47, 72, 61, 84, 79 };
-		BSTree tree = new BSTree();
-		tree.init(init);
-		System.out.println(Arrays.toString(tree.toArray()));
 	}
 }

@@ -1,28 +1,27 @@
 
-public interface TreeInterface
+interface TreeInterface
 {
-	public void init(int[] init);
+	void init(int[] init);
+	
+	void clear();
+	
+	void add(int val);
+	
+	int size();
+	
+	int leaves();
+	
+	int nodes();
+	
+	int height();
+	
+	int width();
+	
+	void reverse();
+	
+	void del(int val);
 
-	public void clear();
-
-	public void add(int val);
-
-	public int size();
-
-	public int leaves();
-
-	public int nodes();
-
-	public int height();
-
-	public int width();
-
-	public void reverse();
-
-	public void del(int val);
-
-	@Override
-	public String toString();
-
-	public int[] toArray();
+	String toString();
+	
+	int[] toArray();
 }
